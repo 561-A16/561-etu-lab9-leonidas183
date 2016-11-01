@@ -14,4 +14,5 @@
 ## Consignes
 - Avant de faire un commit, tester sur un serveur de BD en local.
 - Vous n'avez pas à installer de serveur de BD sur Digital Ocean, seulement l'utiliser.
-- Par défaut, votre nom d'utilisateur et mot de passe sur le serveur MySql est pppnnn (ppp = 3 premières lettres de votre prénom et nnn = trois premières lettres de votre nom).
+- Par défaut, votre nom d'utilisateur et mot de passe sur le serveur MySql est pppnnn (ppp = 3 premières lettres de votre prénom et nnn = trois premières lettres de votre nom). 
+- Utiliser comme nom de BD nom d'utilisateur.

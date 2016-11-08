@@ -19,19 +19,23 @@ namespace WebApplication
     {
         public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+			var builder = new ConfigurationBuilder()
+					  .SetBasePath(env.ContentRootPath)
+					  .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+			Configuration = builder.Build();
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(env.ContentRootPath)
+            //    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            //    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
+            //    builder.AddUserSecrets();
+            //}
 
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
+            //builder.AddEnvironmentVariables();
+            //Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -40,8 +44,8 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddDbContext<ApplicationDbContext>(options =>
+				 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

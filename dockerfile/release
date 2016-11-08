@@ -6,6 +6,6 @@ ENTRYPOINT ["dotnet","webapp.dll"]
 
 ENV ASPNETCORE_URLS http://+:5000
 
-ENV ASPNETCORE_ENVIRONMENT Development
+#ENV ASPNETCORE_ENVIRONMENT Development
 
 WORKDIR /publish
